@@ -1,4 +1,4 @@
-from os import listdir, remove, path
+from os import listdir, remove, path, makedirs
 from barcode import Code128
 from barcode.writer import ImageWriter
 from datetime import datetime
@@ -14,10 +14,11 @@ class BarCoder:
     def __init__(self, numbers: tuple, report_type: str = None):
         self.numbers = numbers
         self.report_type = report_type
+        if not path.exists(self.folder):
+            makedirs(self.folder)
 
     def create(self):
         writer = ImageWriter()
-        # writer.FONT = f'{os.getcwd()}/DejaVuSansMono.ttf'
         try:
             for n in self.numbers:
                 my_code = Code128(n, writer=writer)
