@@ -1,0 +1,40 @@
+{% extends 'common.html' %}
+    {% block main %}
+        <div class="row">
+
+              <div class="col-10 mt-1 ml-auto" >
+                  <h1 class="display-5 fw-bold">Блок генерации штрих кодов с номерами</h1>
+              </div>
+              <div class="col-2 mt-3 mr-auto">
+                  <img id="main-logo" class="d-inline-block align-top mr-1" style="max-width: 180px;" src="static/logo_1.png" alt="ГЕНЕРАТОР ШТРИХ-КОДОВ ZENNER">
+                  <span class="d-none d-md-inline ml-1"></span>
+              </div>
+
+        </div>
+
+        <div class="container-fluid py-5">
+
+            <p class="col-md-10 fs-4">Разработано специально для склада компании "Ценнер-центр Санкт- Петербург"</p>
+
+
+            <form action="{{ url_for('handle_data') }}" method="post" class="mt-3">
+              <div class="form-group mt-5">
+                <label>Адрес генерации стикеров  фиксирован во избежание критических ошибок пользователя</label>
+                <input type="text" class="form-control" name="Input1" placeholder="/generated" disabled="True">
+              </div>
+              <div class="form-group mt-2">
+                <label>Выберите доп. опцию обработки</label>
+                <select multiple class="form-control" name="Report">
+                  <option>Сохранить отчет в Excel</option>
+                  <option>Не сохранять отчет в Excel</option>
+                </select>
+              </div>
+              <div class="form-group mt-2">
+                <label>Перед сканированием кликните мышкой в область ниже</label>
+                <textarea class="form-control" name="Serial_numbers" rows="3"></textarea>
+              </div>
+                 <button class="btn btn-outline-primary btn-lg mt-3"  type="submit">Выполнить</button>
+            </form>
+
+        </div>
+    {% endblock %}
